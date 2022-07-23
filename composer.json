@@ -1,0 +1,34 @@
+{
+    "name": "sudippalash/lang-maker",
+    "description": "Laravel package for Language Make & Edit",
+    "keywords": [
+        "Sudip",
+        "Laravel Language Make & Edit",
+        "Language Make & Edit",
+        "Laravel"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sudip Palash",
+            "email": "palash.sudip@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Sudip\\LangMaker\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sudip\\LangMaker\\Providers\\AppServiceProvider",
+                "Sudip\\LangMaker\\Providers\\RouteServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
