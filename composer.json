@@ -1,10 +1,10 @@
 {
     "name": "sudippalash/lang-maker",
-    "description": "Laravel package for Language Make & Edit",
+    "description": "Laravel package for Language Make and Edit",
     "keywords": [
         "Sudip",
-        "Laravel Language Make & Edit",
-        "Language Make & Edit",
+        "Laravel Language Make and Edit",
+        "Language Make and Edit",
         "Laravel"
     ],
     "type": "library",
