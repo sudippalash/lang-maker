@@ -29,9 +29,9 @@ trait LangUtility
         $content = "";
         foreach ($fileData as $lable => $data) {
             if(is_array($data)) {
-                $content .= "'$lable'=>[" . $this->buildArray($data) . "],";
+                $content .= "\t'$lable' => [" . $this->buildArray($data) . "],\n";
             } else {
-                $content .= "'$lable'=>'" . addslashes($data) . "',";
+                $content .= "\t'$lable' => '" . addslashes($data) . "',\n";
             }
         }
         

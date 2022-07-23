@@ -101,7 +101,7 @@ class LanguageController extends Controller
 
         if (!empty($request->message)) {
             foreach($request->message as $fileName => $fileData) {
-                $content = "<?php return [";
+                $content = "<?php\n\nreturn [\n";
                 $content .= $this->buildArray($fileData);
                 $content .= "];";
                 file_put_contents($langFolder . "/" . $fileName . '.php', $content);

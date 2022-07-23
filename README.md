@@ -12,7 +12,7 @@
 Via Composer
 
 ```bash
-$ composer require sudippalash/lang-maker
+composer require sudippalash/lang-maker
 ```
 
 #### Publish config file
@@ -59,8 +59,8 @@ In `config/lang-maker.php` config file you should set `lang-maker` global path.
         | If language route use any middleware then provide it or leave empty array. Example: ['auth ']
         */
 
-        'route_name' => 'admin.language',
-        'route_prefix' => 'admin/language',
+        'route_name' => 'user.language',
+        'route_prefix' => 'user/language',
         'middleware' => [],
 
         /*
@@ -71,7 +71,7 @@ In `config/lang-maker.php` config file you should set `lang-maker` global path.
         | specify the file names (without extension) in array which you want to ignore to modify or leave it blank array
         */
 
-        'ignore_lang_file' => ['validation'],
+        'ignore_lang_file' => [],   //['validation', 'pagination']
 
         /*
         |--------------------------------------------------------------------------
