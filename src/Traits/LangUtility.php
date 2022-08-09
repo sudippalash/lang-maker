@@ -41,21 +41,20 @@ trait LangUtility
     public function cssGenerate()
     {
         $cssClass = config('lang-maker.css');
-        if (!isset($cssClass['container']) && $cssClass['container'] == null) {
-            $cssClass['container'] = 'container-fluid';
-        }
         
-        if (!isset($cssClass['card']) && $cssClass['card'] == null) {
-            $cssClass['card'] = 'card';
-        }
+        $cssClass['container'] = isset($cssClass['container']) ? $cssClass['container'] : 'container-fluid';
+
+        $cssClass['card'] = isset($cssClass['card']) ? $cssClass['card'] : 'card';
+
+        $cssClass['input'] = isset($cssClass['input']) ? $cssClass['input'] : 'form-control';
+
+        $cssClass['btn'] = isset($cssClass['btn']) ? $cssClass['btn'] : 'btn-secondary';
+
+        $cssClass['table'] = isset($cssClass['table']) ? $cssClass['table'] : null;
+
+        $cssClass['table_action_col_width'] = isset($cssClass['table_action_col_width']) ? $cssClass['table_action_col_width'] : null;
         
-        if (!isset($cssClass['input']) && $cssClass['input'] == null) {
-            $cssClass['input'] = 'form-control';
-        }
-        
-        if (!isset($cssClass['btn']) && $cssClass['btn'] == null) {
-            $cssClass['btn'] = 'btn-secondary';
-        }
+        $cssClass['link'] = isset($cssClass['link']) ? $cssClass['link'] : 'nav-link';
         
         return $cssClass;
     }

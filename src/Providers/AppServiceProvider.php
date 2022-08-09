@@ -13,12 +13,18 @@ class AppServiceProvider extends ServiceProvider
         );
     }
 
-
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../views', 'langmake');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'lang-maker');
+
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'lang-maker');
+
         $this->publishes([
             __DIR__ . '/../../config/lang-maker.php' => config_path('lang-maker.php'),
-        ], 'lang-maker');
+        ], 'config');
+
+        $this->publishes([
+            __DIR__.'/../resources/lang' => resource_path('lang/vendor/lang-maker'),
+        ], 'lang');
     }
 }

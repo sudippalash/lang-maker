@@ -47,7 +47,7 @@ class LanguageController extends Controller
 
         $cssClass = $this->cssGenerate();
 
-        $blade = config('lang-maker.bootstrap_v') == 3 ? 'langmake::index-3' : 'langmake::index';
+        $blade = config('lang-maker.bootstrap_v') == 3 ? 'lang-maker::index-3' : 'lang-maker::index';
 
         return view($blade, compact('languages', 'currantLang', 'jsonFileArray', 'pageArray', 'cssClass'));
     }
@@ -76,7 +76,7 @@ class LanguageController extends Controller
         $fileSystem = new Filesystem();
         $fileSystem->copyDirectory($langDir . "en", $dir . "/");
 
-        return redirect()->route(config('lang-maker.route_name'), [$langCode])->with('success', __('Language Created Successfully!'));
+        return redirect()->route(config('lang-maker.route_name'), [$langCode])->with(config('lang-maker.flash_success'), trans('lang-maker::sp_lang_maker.create_message'));
     }
 
     public function update(Request $request, $currantLang)
@@ -108,6 +108,6 @@ class LanguageController extends Controller
             }
         }
 
-        return redirect()->route(config('lang-maker.route_name'), [$currantLang])->with('success', __('Language Save Successfully!'));
+        return redirect()->route(config('lang-maker.route_name'), [$currantLang])->with(config('lang-maker.flash_success'), trans('lang-maker::sp_lang_maker.update_message'));
     }
 }

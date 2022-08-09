@@ -1,11 +1,11 @@
-## lang-maker comes to Laravel
+## lang-maker
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
-`lang-maker` is a simple file handling package of `Laravel` that provides variety of options to deal with languages.
+`lang-maker` is a simple language handling package of `Laravel` that provides to create and modify your project's lang folder.
 
 ## Install
 
@@ -15,15 +15,13 @@ Via Composer
 composer require sudippalash/lang-maker
 ```
 
-#### Publish config file
+You can publish the config file with:
 
-You will need to publish config file to add `lang-maker` global path.
-
-```
-php artisan vendor:publish --provider="Sudip\LangMaker\Providers\AppServiceProvider" --tag=lang-maker
+```bash
+php artisan vendor:publish --provider="Sudip\LangMaker\Providers\AppServiceProvider" --tag=config
 ```
 
-In `config/lang-maker.php` config file you should set `lang-maker` global path.
+This is the contents of the published config file `config/lang-maker.php`:
 
 ```php
     return [
@@ -56,11 +54,11 @@ In `config/lang-maker.php` config file you should set `lang-maker` global path.
         |
         | Provide a route name for language route. Example: user.language
         | Provide a prefix name for language url. Example: user/language
-        | If language route use any middleware then provide it or leave empty array. Example: ['auth ']
+        | If language route use any middleware then provide it or leave empty array. Example: ['auth '] 
         */
 
-        'route_name' => 'user.language',
-        'route_prefix' => 'user/language',
+        'route_name' => 'user.languages',
+        'route_prefix' => 'user/languages',
         'middleware' => [],
 
         /*
@@ -71,7 +69,7 @@ In `config/lang-maker.php` config file you should set `lang-maker` global path.
         | specify the file names (without extension) in array which you want to ignore to modify or leave it blank array
         */
 
-        'ignore_lang_file' => [],   //['validation', 'pagination']
+        'ignore_lang_file' => ['validation'],
 
         /*
         |--------------------------------------------------------------------------
@@ -83,6 +81,18 @@ In `config/lang-maker.php` config file you should set `lang-maker` global path.
         */
 
         'bootstrap_v' => 4,
+
+        /*
+        |--------------------------------------------------------------------------
+        | Flash Messages
+        |--------------------------------------------------------------------------
+        |
+        | After Save/Update flash message session key name
+        | 
+        */
+
+        'flash_success' => 'success',
+        'flash_error' => 'error',
 
 
         /*
@@ -98,8 +108,23 @@ In `config/lang-maker.php` config file you should set `lang-maker` global path.
             'card' => null,
             'input' => null,
             'btn' => null,
+            'link' => null,
         ],
     ];
+```
+
+Optionally, you can publish the lang using
+
+```bash
+php artisan vendor:publish --provider="Sudip\LangMaker\Providers\AppServiceProvider" --tag=lang
+```
+
+## Usage
+
+You should copy the below line and paste in your project menu section
+
+```bash
+<a href="{{ route(config('lang-maker.route_name')) }}">{{ trans('lang-maker::sp_lang_maker.language') }}</a>
 ```
 
 ## License

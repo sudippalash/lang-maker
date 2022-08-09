@@ -5,7 +5,7 @@
     <div class="{{ $cssClass['card'] }}">
         <div class="card-header">
             <div class="d-flex justify-content-between">
-                <h4 class="m-0">Language</h4>
+                <h4 class="m-0">{{ trans('lang-maker::sp_lang_maker.language') }}</h4>
                 <div class="d-flex">
                     <div class="dropdown">
                         <button class="btn {{ $cssClass['btn'] }} dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn {{ $cssClass['btn'] }} ml-3" data-toggle="modal" data-target="#createModal">Create</button>
+                    <button type="button" class="btn {{ $cssClass['btn'] }} ml-3" data-toggle="modal" data-target="#createModal">{{ trans('lang-maker::sp_lang_maker.create') }}</button>
                 </div>
             </div>
         </div>
@@ -31,14 +31,14 @@
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2" style="border-right: 1px solid #f5f5f5;">
                         <div class="nav flex-column nav-pills" id="v-pills-tab">
                             @if(!empty($jsonFileArray))
-                            <a class="nav-link active" data-toggle="pill" href="#v-pills-json">JSON</a>
+                            <a class="{{ $cssClass['link'] }} active" data-toggle="pill" href="#v-pills-json">{{ trans('lang-maker::sp_lang_maker.json') }}</a>
                             @endif
 
                             @php
                                 $x = 0;
                             @endphp
                             @foreach($pageArray as $fileName => $fileValue)
-                            <a class="nav-link{{ (empty($jsonFileArray) && $x == 0) ? ' active' : null }}" data-toggle="pill" href="#v-pills-{{ $fileName }}">{{ucfirst($fileName)}}</a>
+                            <a class="{{ $cssClass['link'] }}{{ (empty($jsonFileArray) && $x == 0) ? ' active' : null }}" data-toggle="pill" href="#v-pills-{{ $fileName }}">{{ucfirst($fileName)}}</a>
                             @php
                                 $x++;
                             @endphp
@@ -131,7 +131,7 @@
                     </div>
 
                     <div class="col-md-12 text-right">
-                        <button class="btn {{ $cssClass['btn'] }}" type="submit">{{ __('Save Changes')}}</button>
+                        <button class="btn {{ $cssClass['btn'] }}" type="submit">{{ trans('lang-maker::sp_lang_maker.save') }}</button>
                     </div>
                 </div>
             </form>
@@ -145,19 +145,19 @@
 
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="createModalLabel">Create New Language</h5>
+                        <h5 class="modal-title" id="createModalLabel">{{ trans('lang-maker::sp_lang_maker.language_create') }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="code" class="col-form-label">Language Code</label>
+                            <label for="code" class="col-form-label">{{ trans('lang-maker::sp_lang_maker.language_code') }}</label>
                             <input type="text" class="{{ $cssClass['input'] }}" id="code" name="code" required>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn {{ $cssClass['btn'] }}">Create</button>
+                        <button type="submit" class="btn {{ $cssClass['btn'] }}">{{ trans('lang-maker::sp_lang_maker.save') }}</button>
                     </div>
                 </div>
             </form>

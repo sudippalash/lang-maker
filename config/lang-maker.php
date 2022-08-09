@@ -33,8 +33,8 @@ return [
     | If language route use any middleware then provide it or leave empty array. Example: ['auth '] 
     */
 
-    'route_name' => 'admin.language',
-    'route_prefix' => 'admin/language',
+    'route_name' => 'user.languages',
+    'route_prefix' => 'user/languages',
     'middleware' => [],
 
     /*
@@ -58,6 +58,18 @@ return [
 
     'bootstrap_v' => 4,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Flash Messages
+    |--------------------------------------------------------------------------
+    |
+    | After Save/Update flash message session key name
+    | 
+    */
+
+    'flash_success' => 'success',
+    'flash_error' => 'error',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -72,5 +84,6 @@ return [
         'card' => null,
         'input' => null,
         'btn' => null,
+        'link' => null,
     ],
 ];
