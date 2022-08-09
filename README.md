@@ -54,8 +54,8 @@ This is the contents of the published config file `config/lang-maker.php`:
         | Route Name, Prefix & Middleware
         |--------------------------------------------------------------------------
         |
-        | Provide a route name for language route. Example: user.language
-        | Provide a prefix name for language url. Example: user/language
+        | Provide a route name for language route. Example: user.languages
+        | Provide a prefix name for language url. Example: user/languages
         | If language route use any middleware then provide it or leave empty array. Example: ['auth '] 
         */
 
