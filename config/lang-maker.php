@@ -42,7 +42,8 @@ return [
     | Ignore Language File
     |--------------------------------------------------------------------------
     |
-    | specify the file names (without extension) in array which you want to ignore to modify or leave it blank array
+    | specify the file names (without extension) in array which you want to ignore to modify
+    | or leave it blank array
     */
 
     'ignore_lang_file' => ['validation'],
