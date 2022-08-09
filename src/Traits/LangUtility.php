@@ -50,7 +50,7 @@ trait LangUtility
 
         $cssClass['btn'] = isset($cssClass['btn']) ? $cssClass['btn'] : 'btn-secondary';
         
-        $cssClass['link'] = isset($cssClass['link']) ? $cssClass['link'] : 'nav-link';
+        $cssClass['link'] = isset($cssClass['link']) ? $cssClass['link'] : 'lang-maker-link';
         
         return $cssClass;
     }

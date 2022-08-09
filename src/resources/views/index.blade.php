@@ -1,7 +1,23 @@
 @extends(config('lang-maker.layout_name'))
 
+<style>
+.lang-maker .nav-pills-tab {
+    border-right: 1px solid #f5f5f5;
+}
+.lang-maker .nav-pills .lang-maker-link {
+    color: #000000;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e5e2e2;
+}
+.lang-maker .nav-pills .lang-maker-link.active {
+    color: #ffffff;
+    background-color: #8898aa;
+}
+</style>
+
 @section(config('lang-maker.section_name'))
-<section class="{{ $cssClass['container'] }}">
+<section class="lang-maker {{ $cssClass['container'] }}">
     <div class="{{ $cssClass['card'] }}">
         <div class="card-header">
             <div class="d-flex justify-content-between">
@@ -28,7 +44,7 @@
                 @csrf
 
                 <div class="row">
-                    <div class="col-12 col-sm-4 col-md-3 col-lg-2" style="border-right: 1px solid #f5f5f5;">
+                    <div class="col-12 col-sm-4 col-md-3 col-lg-2 nav-pills-tab">
                         <div class="nav flex-column nav-pills" id="v-pills-tab">
                             @if(!empty($jsonFileArray))
                             <a class="{{ $cssClass['link'] }} active" data-toggle="pill" href="#v-pills-json">{{ trans('lang-maker::sp_lang_maker.json') }}</a>
