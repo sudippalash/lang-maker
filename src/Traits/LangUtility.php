@@ -49,10 +49,6 @@ trait LangUtility
         $cssClass['input'] = isset($cssClass['input']) ? $cssClass['input'] : 'form-control';
 
         $cssClass['btn'] = isset($cssClass['btn']) ? $cssClass['btn'] : 'btn-secondary';
-
-        $cssClass['table'] = isset($cssClass['table']) ? $cssClass['table'] : null;
-
-        $cssClass['table_action_col_width'] = isset($cssClass['table_action_col_width']) ? $cssClass['table_action_col_width'] : null;
         
         $cssClass['link'] = isset($cssClass['link']) ? $cssClass['link'] : 'nav-link';
         
