@@ -5,7 +5,7 @@ return [
     'json' => 'JSON',
     'language_create' => 'Create New Language',
     'language_code' => 'Language Code',
-    
+
     'create' => 'Create',
     'save' => 'Save',
 

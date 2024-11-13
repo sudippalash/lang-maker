@@ -7,18 +7,18 @@ return [
     |--------------------------------------------------------------------------
     |
     | Your main layout file path name. Example: layouts.app
-    | 
+    |
     */
 
     'layout_name' => 'layouts.app',
-    
+
     /*
     |--------------------------------------------------------------------------
     | Section Name
     |--------------------------------------------------------------------------
     |
     | Your section name which in yield in main layout file. Example: content
-    | 
+    |
     */
 
     'section_name' => 'content',
@@ -30,7 +30,7 @@ return [
     |
     | Provide a route name for language route. Example: user.languages
     | Provide a prefix name for language url. Example: user/languages
-    | If language route use any middleware then provide it or leave empty array. Example: ['auth '] 
+    | If language route use any middleware then provide it or leave empty array. Example: ['auth']
     */
 
     'route_name' => 'user.languages',
@@ -54,7 +54,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Which bootstrap you use in your application. Example: 3 or 4 or 5
-    | 
+    |
     */
 
     'bootstrap_v' => 4,
@@ -65,19 +65,18 @@ return [
     |--------------------------------------------------------------------------
     |
     | After Save/Update flash message session key name
-    | 
+    |
     */
 
     'flash_success' => 'success',
     'flash_error' => 'error',
-
 
     /*
     |--------------------------------------------------------------------------
     | CSS
     |--------------------------------------------------------------------------
     |
-    | Add your css class in this property if you want to change design. 
+    | Add your css class in this property if you want to change design.
     */
 
     'css' => [

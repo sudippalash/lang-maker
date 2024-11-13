@@ -96,7 +96,7 @@
                                                                     @foreach($value4 as $label5 => $value5)
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
-                                                                                <label>{{$fileName}}.{{$label}}.{{$label2}}.{{$label3}}.{{$label4}}.{{$label5}}</label>
+                                                                                <label>{{$label}}.{{$label2}}.{{$label3}}.{{$label4}}.{{$label5}}</label>
                                                                                 <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}][{{$label3}}][{{$label4}}][{{$label5}}]" value="{{$value5}}">
                                                                             </div>
                                                                         </div>
@@ -104,7 +104,7 @@
                                                                 @else
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>{{$fileName}}.{{$label}}.{{$label2}}.{{$label3}}.{{$label4}}</label>
+                                                                            <label>{{$label}}.{{$label2}}.{{$label3}}.{{$label4}}</label>
                                                                             <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}][{{$label3}}][{{$label4}}]" value="{{$value4}}">
                                                                         </div>
                                                                     </div>
@@ -113,7 +113,7 @@
                                                         @else
                                                             <div class="col-lg-6">
                                                                 <div class="form-group">
-                                                                    <label>{{$fileName}}.{{$label}}.{{$label2}}.{{$label3}}</label>
+                                                                    <label>{{$label}}.{{$label2}}.{{$label3}}</label>
                                                                     <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}][{{$label3}}]" value="{{$value3}}">
                                                                 </div>
                                                             </div>
@@ -122,7 +122,7 @@
                                                 @else
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>{{$fileName}}.{{$label}}.{{$label2}}</label>
+                                                            <label>{{$label}}.{{$label2}}</label>
                                                             <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}]" value="{{$value2}}">
                                                         </div>
                                                     </div>
@@ -131,7 +131,7 @@
                                         @else
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label>{{$fileName}}.{{$label}}</label>
+                                                    <label>{{$label}}</label>
                                                     <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}]" value="{{$value}}">
                                                 </div>
                                             </div>

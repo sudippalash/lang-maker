@@ -9,22 +9,22 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../../config/lang-maker.php', 'lang-maker'
+            __DIR__.'/../../config/lang-maker.php', 'lang-maker'
         );
     }
 
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'lang-maker');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'lang-maker');
 
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'lang-maker');
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'lang-maker');
 
         $this->publishes([
-            __DIR__ . '/../../config/lang-maker.php' => config_path('lang-maker.php'),
+            __DIR__.'/../../config/lang-maker.php' => config_path('lang-maker.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/lang-maker'),
+            __DIR__.'/../lang' => lang_path('vendor/lang-maker'),
         ], 'lang');
     }
 }
