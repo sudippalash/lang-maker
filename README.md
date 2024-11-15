@@ -1,9 +1,8 @@
-## lang-maker
+## Language Maker
 
 ![alt text](https://github.com/sudippalash/lang-maker/blob/master/img.jpg?raw=true)
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
@@ -130,13 +129,8 @@ You should copy the below line and paste in your project menu section
 <a href="{{ route(config('lang-maker.route_name')) }}">{{ trans('lang-maker::sp_lang_maker.languages') }}</a>
 ```
 
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
 [ico-version]: https://img.shields.io/packagist/v/sudippalash/lang-maker?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/sudippalash/lang-maker?style=flat-square
-[ico-license]: https://img.shields.io/github/license/sudippalash/lang-maker?style=flat-square
 [link-packagist]: https://packagist.org/packages/sudippalash/lang-maker
 [link-downloads]: https://packagist.org/packages/sudippalash/lang-maker
 [link-author]: https://github.com/sudippalash
