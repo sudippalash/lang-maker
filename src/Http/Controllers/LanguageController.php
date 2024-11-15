@@ -81,6 +81,7 @@ class LanguageController extends Controller
 
     public function update(Request $request, $currantLang)
     {
+        $dir = lang_path();
         if ($request->label) {
             $jsonFile = $dir.'/'.$currantLang.'.json';
             file_put_contents($jsonFile, json_encode($request->label));

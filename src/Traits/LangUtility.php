@@ -7,12 +7,17 @@ trait LangUtility
     public function languages()
     {
         $dir = lang_path();
-        $glob = glob($dir.'*', GLOB_ONLYDIR);
+        $glob = glob($dir.'/*', GLOB_ONLYDIR);
         $arrLang = array_map(
             function ($value) use ($dir) {
-                return str_replace($dir, '', $value);
+                return str_replace($dir.'/', '', $value);
             }, $glob
         );
+
+        // Ignore lang/vendor directory
+        if (in_array('vendor', $arrLang)) {
+            unset($arrLang[array_search('vendor', $arrLang)]);
+        }
 
         $arrLang = array_map(
             function ($value) {
