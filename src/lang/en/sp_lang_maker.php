@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'languages' => 'Languages',
     'language' => 'Language',
     'json' => 'JSON',
     'language_create' => 'Create New Language',

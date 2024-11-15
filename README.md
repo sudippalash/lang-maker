@@ -127,7 +127,7 @@ php artisan vendor:publish --provider="Sudip\LangMaker\Providers\AppServiceProvi
 You should copy the below line and paste in your project menu section
 
 ```bash
-<a href="{{ route(config('lang-maker.route_name')) }}">{{ trans('lang-maker::sp_lang_maker.language') }}</a>
+<a href="{{ route(config('lang-maker.route_name')) }}">{{ trans('lang-maker::sp_lang_maker.languages') }}</a>
 ```
 
 ## License
