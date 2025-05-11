@@ -36,13 +36,12 @@ class LanguageController extends Controller
             ]
         );
 
-        $ignore_lang_files = is_array(config('lang-maker.ignore_lang_file')) ? config('lang-maker.ignore_lang_file') : [];
+        $ignoreLangFiles = is_array(config('lang-maker.ignore_lang_file')) ? config('lang-maker.ignore_lang_file') : [];
 
         $pageArray = [];
         foreach ($arrFiles as $file) {
             $fileName = basename($file, '.php');
-
-            if (! in_array($fileName, $ignore_lang_files)) {
+            if (! in_array($fileName, $ignoreLangFiles)) {
                 $fileData = $myArray = include $dir.'/'.$file;
                 if (is_array($fileData)) {
                     $pageArray[$fileName] = $fileData;
@@ -51,19 +50,10 @@ class LanguageController extends Controller
         }
 
         $bootstrapVersion = config('lang-maker.bootstrap_v');
-
-        if ($request->v) {
-            $bootstrapVersion = $request->v;
-            config(['lang-maker.bootstrap_v' => $bootstrapVersion]);
-        }
-
         $cssClass = $this->cssGenerate($bootstrapVersion);
-
         $dataBs = ($bootstrapVersion != 5 ? 'data' : 'data-bs');
 
-        $blade = $bootstrapVersion == 3 ? 'lang-maker::index' : 'lang-maker::index';
-
-        return view($blade, compact('bootstrapVersion', 'languages', 'currantLang', 'jsonFileArray', 'pageArray', 'cssClass', 'dataBs'));
+        return view('lang-maker::index', compact('bootstrapVersion', 'languages', 'currantLang', 'jsonFileArray', 'pageArray', 'cssClass', 'dataBs'));
     }
 
     public function store(Request $request)
