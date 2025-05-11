@@ -47,13 +47,16 @@ trait LangUtility
     {
         $cssClass = config('lang-maker.css');
 
+        $card = config('lang-maker.bootstrap_v') == 3 ? 'panel panel-default' : 'card';
+        $btn = config('lang-maker.bootstrap_v') == 3 ? 'btn-default' : 'btn-secondary';
+
         $cssClass['container'] = isset($cssClass['container']) ? $cssClass['container'] : 'container-fluid';
 
-        $cssClass['card'] = isset($cssClass['card']) ? $cssClass['card'] : 'card';
+        $cssClass['card'] = isset($cssClass['card']) ? $cssClass['card'] : $card;
 
         $cssClass['input'] = isset($cssClass['input']) ? $cssClass['input'] : 'form-control';
 
-        $cssClass['btn'] = isset($cssClass['btn']) ? $cssClass['btn'] : 'btn-secondary';
+        $cssClass['btn'] = isset($cssClass['btn']) ? $cssClass['btn'] : $btn;
 
         $cssClass['link'] = isset($cssClass['link']) ? $cssClass['link'] : 'lang-maker-link';
 
