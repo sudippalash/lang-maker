@@ -162,14 +162,21 @@
 
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="langCreateModalLabel">{{ trans('lang-maker::sp_lang_maker.language_create') }}</h5>
-                        @if (config('lang-maker.bootstrap_v') == 5)
-                            <button type="button" class="btn-close" {{ $dataBs }}-dismiss="modal" aria-label="Close"></button>
-                        @else
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        @if (config('lang-maker.bootstrap_v') == 3)
+                            <button type="button" class="close" {{ $dataBs }}-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                        @endif
+                            <h5 class="modal-title" id="langCreateModalLabel">{{ trans('lang-maker::sp_lang_maker.language_create') }}</h5>
+                        @else
+                            <h5 class="modal-title" id="langCreateModalLabel">{{ trans('lang-maker::sp_lang_maker.language_create') }}</h5>
+                            @if (config('lang-maker.bootstrap_v') == 4)
+                                <button type="button" class="close" {{ $dataBs }}-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            @else
+                                <button type="button" class="btn-close" {{ $dataBs }}-dismiss="modal" aria-label="Close"></button>
+                            @endif                        
+                        @endif                        
                     </div>
                     <div class="modal-body">
                         <div class="{{ $formGroup }}">
