@@ -1,20 +1,20 @@
 @extends(config('lang-maker.layout_name'))
 
 <style>
-.lang-maker .nav-pills-tab {
-    border-right: 1px solid #f5f5f5;
-}
-.lang-maker .nav-pills .lang-maker-link {
-    color: #000000;
-    display: block;
-    padding: 0.5rem 1rem;
-    border-bottom: 1px solid #e5e2e2;
-    text-decoration: none;
-}
-.lang-maker .nav-pills .lang-maker-link.active {
-    color: #ffffff;
-    background-color: #8898aa;
-}
+    .lang-maker .nav-pills-tab {
+        border-right: 1px solid #f5f5f5;
+    }
+    .lang-maker .nav-pills .lang-maker-link {
+        color: #000000;
+        display: block;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #e5e2e2;
+        text-decoration: none;
+    }
+    .lang-maker .nav-pills .lang-maker-link.active {
+        color: #ffffff;
+        background-color: #8898aa;
+    }
 </style>
 
 @section(config('lang-maker.section_name'))
@@ -35,7 +35,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn {{ $cssClass['btn'] }} m{{ config('lang-maker.bootstrap_v') == 5 ? 's' : 'l' }}-3" {{ $dataBs }}-toggle="modal" {{ $dataBs }}-target="#langCreateModal">{{ trans('lang-maker::sp_lang_maker.create') }}</button>
+                    <button type="button" class="btn {{ $cssClass['btn'] }} m{{ $bootstrapVersion == 5 ? 's' : 'l' }}-3" {{ $dataBs }}-toggle="modal" {{ $dataBs }}-target="#langCreateModal">{{ trans('lang-maker::sp_lang_maker.create') }}</button>
                 </div>
             </div>
         </div>
@@ -162,14 +162,14 @@
 
                 <div class="modal-content">
                     <div class="modal-header">
-                        @if (config('lang-maker.bootstrap_v') == 3)
+                        @if ($bootstrapVersion == 3)
                             <button type="button" class="close" {{ $dataBs }}-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <h5 class="modal-title" id="langCreateModalLabel">{{ trans('lang-maker::sp_lang_maker.language_create') }}</h5>
                         @else
                             <h5 class="modal-title" id="langCreateModalLabel">{{ trans('lang-maker::sp_lang_maker.language_create') }}</h5>
-                            @if (config('lang-maker.bootstrap_v') == 4)
+                            @if ($bootstrapVersion == 4)
                                 <button type="button" class="close" {{ $dataBs }}-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

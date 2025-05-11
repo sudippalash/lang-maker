@@ -12,7 +12,7 @@ class LanguageController extends Controller
 {
     use LangUtility;
 
-    public function index($currantLang = 'en')
+    public function index(Request $request, $currantLang = 'en')
     {
         if (! config('lang-maker.enabled')) {
             abort(404);
@@ -50,8 +50,9 @@ class LanguageController extends Controller
             }
         }
 
-        $cssClass = $this->cssGenerate();
         $bootstrapVersion = config('lang-maker.bootstrap_v');
+
+        $cssClass = $this->cssGenerate();
 
         $dataBs = ($bootstrapVersion != 5 ? 'data' : 'data-bs');
         $formGroup = ($bootstrapVersion == 3 ? 'form-group' : 'mb-3');
@@ -62,9 +63,9 @@ class LanguageController extends Controller
             $floatRight = 'pull-right';
         }
 
-        $blade = config('lang-maker.bootstrap_v') == 3 ? 'lang-maker::index-3' : 'lang-maker::index';
+        $blade = $bootstrapVersion == 3 ? 'lang-maker::index' : 'lang-maker::index';
 
-        return view($blade, compact('languages', 'currantLang', 'jsonFileArray', 'pageArray', 'cssClass', 'dataBs', 'formGroup', 'floatRight'));
+        return view($blade, compact('bootstrapVersion', 'languages', 'currantLang', 'jsonFileArray', 'pageArray', 'cssClass', 'dataBs', 'formGroup', 'floatRight'));
     }
 
     public function store(Request $request)
