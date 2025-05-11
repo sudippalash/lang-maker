@@ -14,6 +14,10 @@ class LanguageController extends Controller
 
     public function index($currantLang = 'en')
     {
+        if (! config('lang-maker.enabled')) {
+            abort(404);
+        }
+
         $languages = $this->languages();
         $dir = lang_path($currantLang);
         if (! is_dir($dir)) {

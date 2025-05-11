@@ -1,6 +1,17 @@
 <?php
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Lang Maker
+    |--------------------------------------------------------------------------
+    | Lang Maker can be disabled, so it's no longer accessible via browser.
+    |
+    */
+
+    'enabled' => env('LANG_MAKER_ENABLED', true),
+
     /*
     |--------------------------------------------------------------------------
     | Extends Layout Name
