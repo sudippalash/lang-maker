@@ -9,6 +9,7 @@
     display: block;
     padding: 0.5rem 1rem;
     border-bottom: 1px solid #e5e2e2;
+    text-decoration: none;
 }
 .lang-maker .nav-pills .lang-maker-link.active {
     color: #ffffff;
@@ -24,7 +25,7 @@
                 <h4 class="m-0">{{ trans('lang-maker::sp_lang_maker.language') }}</h4>
                 <div class="d-flex">
                     <div class="dropdown">
-                        <button class="btn {{ $cssClass['btn'] }} dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn {{ $cssClass['btn'] }} dropdown-toggle" type="button" id="dropdownMenuButton" {{ $dataBs }}-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ $currantLang }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -34,7 +35,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn {{ $cssClass['btn'] }} ml-3" data-toggle="modal" data-target="#createModal">{{ trans('lang-maker::sp_lang_maker.create') }}</button>
+                    <button type="button" class="btn {{ $cssClass['btn'] }} m{{ config('lang-maker.bootstrap_v') == 5 ? 's' : 'l' }}-3" {{ $dataBs }}-toggle="modal" {{ $dataBs }}-target="#langCreateModal">{{ trans('lang-maker::sp_lang_maker.create') }}</button>
                 </div>
             </div>
         </div>
@@ -47,14 +48,14 @@
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2 nav-pills-tab">
                         <div class="nav flex-column nav-pills" id="v-pills-tab">
                             @if(!empty($jsonFileArray))
-                            <a class="{{ $cssClass['link'] }} active" data-toggle="pill" href="#v-pills-json">{{ trans('lang-maker::sp_lang_maker.json') }}</a>
+                            <a class="{{ $cssClass['link'] }} active" {{ $dataBs }}-toggle="pill" href="#v-pills-json">{{ trans('lang-maker::sp_lang_maker.json') }}</a>
                             @endif
 
                             @php
                                 $x = 0;
                             @endphp
                             @foreach($pageArray as $fileName => $fileValue)
-                            <a class="{{ $cssClass['link'] }}{{ (empty($jsonFileArray) && $x == 0) ? ' active' : null }}" data-toggle="pill" href="#v-pills-{{ $fileName }}">{{ucfirst($fileName)}}</a>
+                            <a class="{{ $cssClass['link'] }}{{ (empty($jsonFileArray) && $x == 0) ? ' active' : null }}" {{ $dataBs }}-toggle="pill" href="#v-pills-{{ $fileName }}">{{ucfirst($fileName)}}</a>
                             @php
                                 $x++;
                             @endphp
@@ -69,7 +70,7 @@
                                 <div class="row">
                                     @foreach($jsonFileArray as $label => $value)
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="{{ $formGroup }}">
                                             <label>{{ $label }} </label>
                                             <input type="text" class="{{ $cssClass['input'] }}" name="label[{{ $label }}]" value="{{ $value }}">
                                         </div>
@@ -95,7 +96,7 @@
                                                                 @if(is_array($value4))
                                                                     @foreach($value4 as $label5 => $value5)
                                                                         <div class="col-md-6">
-                                                                            <div class="form-group">
+                                                                            <div class="{{ $formGroup }}">
                                                                                 <label>{{$label}}.{{$label2}}.{{$label3}}.{{$label4}}.{{$label5}}</label>
                                                                                 <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}][{{$label3}}][{{$label4}}][{{$label5}}]" value="{{$value5}}">
                                                                             </div>
@@ -103,7 +104,7 @@
                                                                     @endforeach
                                                                 @else
                                                                     <div class="col-lg-6">
-                                                                        <div class="form-group">
+                                                                        <div class="{{ $formGroup }}">
                                                                             <label>{{$label}}.{{$label2}}.{{$label3}}.{{$label4}}</label>
                                                                             <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}][{{$label3}}][{{$label4}}]" value="{{$value4}}">
                                                                         </div>
@@ -112,7 +113,7 @@
                                                             @endforeach
                                                         @else
                                                             <div class="col-lg-6">
-                                                                <div class="form-group">
+                                                                <div class="{{ $formGroup }}">
                                                                     <label>{{$label}}.{{$label2}}.{{$label3}}</label>
                                                                     <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}][{{$label3}}]" value="{{$value3}}">
                                                                 </div>
@@ -121,7 +122,7 @@
                                                     @endforeach
                                                 @else
                                                     <div class="col-lg-6">
-                                                        <div class="form-group">
+                                                        <div class="{{ $formGroup }}">
                                                             <label>{{$label}}.{{$label2}}</label>
                                                             <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}]" value="{{$value2}}">
                                                         </div>
@@ -130,7 +131,7 @@
                                             @endforeach
                                         @else
                                             <div class="col-lg-6">
-                                                <div class="form-group">
+                                                <div class="{{ $formGroup }}">
                                                     <label>{{$label}}</label>
                                                     <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}]" value="{{$value}}">
                                                 </div>
@@ -146,28 +147,32 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12 text-right">
-                        <button class="btn {{ $cssClass['btn'] }}" type="submit">{{ trans('lang-maker::sp_lang_maker.save') }}</button>
+                    <div class="col-md-12">
+                        <button class="btn {{ $cssClass['btn'] }} {{ $floatRight }}" type="submit">{{ trans('lang-maker::sp_lang_maker.save') }}</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 
-    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal fade" id="langCreateModal" tabindex="-1" role="dialog" aria-labelledby="langCreateModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <form method="POST" action="{{ route(config('lang-maker.route_name') .'.store') }}">
                 @csrf
 
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="createModalLabel">{{ trans('lang-maker::sp_lang_maker.language_create') }}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h5 class="modal-title" id="langCreateModalLabel">{{ trans('lang-maker::sp_lang_maker.language_create') }}</h5>
+                        @if (config('lang-maker.bootstrap_v') == 5)
+                            <button type="button" class="btn-close" {{ $dataBs }}-dismiss="modal" aria-label="Close"></button>
+                        @else
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        @endif
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
+                        <div class="{{ $formGroup }}">
                             <label for="code" class="col-form-label">{{ trans('lang-maker::sp_lang_maker.language_code') }}</label>
                             <input type="text" class="{{ $cssClass['input'] }}" id="code" name="code" required>
                         </div>
