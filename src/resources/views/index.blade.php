@@ -17,30 +17,59 @@
     }
 </style>
 
+@if ($bootstrapVersion == 3)
+<style>
+    .justify-content-between {
+        justify-content: space-between !important;
+    }
+    .d-flex {
+        display: flex !important;
+    }
+    .ml-3 {
+        margin-left: 1rem !important;
+    }
+    .lang-maker .nav-pills .lang-maker-link.active a {
+        color: #ffffff;
+        background-color: #8898aa;
+    }
+</style>
+@endif
+
 @section(config('lang-maker.section_name'))
 <section class="lang-maker {{ $cssClass['container'] }}">
     <div class="{{ $cssClass['card'] }}">
-        <div class="card-header">
+        <div class="{{ $bootstrapVersion == 3 ? 'panel-heading' : 'card-header' }}">
             <div class="d-flex justify-content-between">
                 <h4 class="m-0">{{ trans('lang-maker::sp_lang_maker.language') }}</h4>
-                <div class="d-flex">
-                    <div class="dropdown">
-                        <button class="btn {{ $cssClass['btn'] }} dropdown-toggle" type="button" id="dropdownMenuButton" {{ $dataBs }}-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ $currantLang }}
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            @foreach($languages as $lang)
-                                <a class="dropdown-item {{($currantLang == $lang)?'active':''}}" href="{{ route(config('lang-maker.route_name'), [$lang]) }}" class="nav-link">{{Str::upper($lang)}}</a>
-                            @endforeach
-                        </div>
-                    </div>
+                <div class="m-0">
+                    <div class="d-flex">
+                        <div class="dropdown">
+                            <button class="btn {{ $cssClass['btn'] }} dropdown-toggle" type="button" id="dropdownMenuButton" {{ $dataBs }}-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ $currantLang }} @if($bootstrapVersion == 3)<span class="caret"></span>@endif
+                            </button>
 
-                    <button type="button" class="btn {{ $cssClass['btn'] }} m{{ $bootstrapVersion == 5 ? 's' : 'l' }}-3" {{ $dataBs }}-toggle="modal" {{ $dataBs }}-target="#langCreateModal">{{ trans('lang-maker::sp_lang_maker.create') }}</button>
+                            @if($bootstrapVersion == 3)
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @foreach($languages as $lang)
+                                        <li><a class="dropdown-item {{($currantLang == $lang)?'active':''}}" href="{{ route(config('lang-maker.route_name'), [$lang]) }}" class="nav-link">{{Str::upper($lang)}}</a></li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @foreach($languages as $lang)
+                                        <a class="dropdown-item {{($currantLang == $lang)?'active':''}}" href="{{ route(config('lang-maker.route_name'), [$lang]) }}" class="nav-link">{{Str::upper($lang)}}</a>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+
+                        <button type="button" class="btn {{ $cssClass['btn'] }} m{{ $bootstrapVersion == 5 ? 's' : 'l' }}-3" {{ $dataBs }}-toggle="modal" {{ $dataBs }}-target="#langCreateModal">{{ trans('lang-maker::sp_lang_maker.create') }}</button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="card-body">
+        <div class="{{ $bootstrapVersion == 3 ? 'panel-body' : 'card-body' }}">
             <form method="post" action="{{route(config('lang-maker.route_name') . '.update', [$currantLang])}}">
                 @csrf
 
