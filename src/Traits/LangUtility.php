@@ -43,12 +43,16 @@ trait LangUtility
         return $content;
     }
 
-    public function cssGenerate()
+    public function cssGenerate($bootstrapVersion)
     {
         $cssClass = config('lang-maker.css');
 
-        $card = config('lang-maker.bootstrap_v') == 3 ? 'panel panel-default' : 'card';
-        $btn = config('lang-maker.bootstrap_v') == 3 ? 'btn-default' : 'btn-secondary';
+        $card = $bootstrapVersion == 3 ? 'panel panel-default' : 'card';
+        $btn = $bootstrapVersion == 3 ? 'btn-default' : 'btn-secondary';
+
+        $cssClass['tabActive'] = ($bootstrapVersion != 5 ? 'active' : 'show active');
+        $cssClass['formGroup'] = ($bootstrapVersion == 3 ? 'form-group' : 'mb-3');
+        $cssClass['floatRight'] = ($bootstrapVersion == 3 ? 'pull-right' : ($bootstrapVersion == 4 ? 'float-right' : 'float-end'));
 
         $cssClass['container'] = isset($cssClass['container']) ? $cssClass['container'] : 'container-fluid';
 

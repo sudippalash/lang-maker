@@ -52,20 +52,18 @@ class LanguageController extends Controller
 
         $bootstrapVersion = config('lang-maker.bootstrap_v');
 
-        $cssClass = $this->cssGenerate();
+        if ($request->v) {
+            $bootstrapVersion = $request->v;
+            config(['lang-maker.bootstrap_v' => $bootstrapVersion]);
+        }
+
+        $cssClass = $this->cssGenerate($bootstrapVersion);
 
         $dataBs = ($bootstrapVersion != 5 ? 'data' : 'data-bs');
-        $formGroup = ($bootstrapVersion == 3 ? 'form-group' : 'mb-3');
-        $floatRight = 'float-end';
-        if ($bootstrapVersion == 4) {
-            $floatRight = 'float-right';
-        } elseif ($bootstrapVersion == 3) {
-            $floatRight = 'pull-right';
-        }
 
         $blade = $bootstrapVersion == 3 ? 'lang-maker::index' : 'lang-maker::index';
 
-        return view($blade, compact('bootstrapVersion', 'languages', 'currantLang', 'jsonFileArray', 'pageArray', 'cssClass', 'dataBs', 'formGroup', 'floatRight'));
+        return view($blade, compact('bootstrapVersion', 'languages', 'currantLang', 'jsonFileArray', 'pageArray', 'cssClass', 'dataBs'));
     }
 
     public function store(Request $request)

@@ -46,31 +46,51 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2 nav-pills-tab">
-                        <div class="nav flex-column nav-pills" id="v-pills-tab">
-                            @if(!empty($jsonFileArray))
-                            <a class="{{ $cssClass['link'] }} active" {{ $dataBs }}-toggle="pill" href="#v-pills-json">{{ trans('lang-maker::sp_lang_maker.json') }}</a>
-                            @endif
+                        @if ($bootstrapVersion == 3)
+                            <ul class="nav nav-pills nav-stacked" id="v-pills-tab">
+                                @if(!empty($jsonFileArray))
+                                    <li class="{{ $cssClass['link'] }} active">
+                                        <a {{ $dataBs }}-toggle="pill" href="#v-pills-json">{{ trans('lang-maker::sp_lang_maker.json') }}</a>
+                                    </li>
+                                @endif
 
-                            @php
-                                $x = 0;
-                            @endphp
-                            @foreach($pageArray as $fileName => $fileValue)
-                            <a class="{{ $cssClass['link'] }}{{ (empty($jsonFileArray) && $x == 0) ? ' active' : null }}" {{ $dataBs }}-toggle="pill" href="#v-pills-{{ $fileName }}">{{ucfirst($fileName)}}</a>
-                            @php
-                                $x++;
-                            @endphp
-                            @endforeach
-                        </div>
+                                @php $x = 0; @endphp
+                                @foreach($pageArray as $fileName => $fileValue)
+                                    <li class="{{ $cssClass['link'] }}{{ (empty($jsonFileArray) && $x == 0) ? ' active' : null }}">
+                                        <a {{ $dataBs }}-toggle="pill" href="#v-pills-{{ $fileName }}">{{ucfirst($fileName)}}</a>
+                                    </li>
+                                    @php $x++; @endphp
+                                @endforeach
+                            </ul>
+                        @else
+                            <div class="nav flex-column nav-pills" id="v-pills-tab">
+                                @if(!empty($jsonFileArray))
+                                    <a class="{{ $cssClass['link'] }} active" {{ $dataBs }}-toggle="pill" href="#v-pills-json">
+                                        {{ trans('lang-maker::sp_lang_maker.json') }}
+                                    </a>
+                                @endif
+
+                                @php
+                                    $x = 0;
+                                @endphp
+                                @foreach($pageArray as $fileName => $fileValue)
+                                    <a class="{{ $cssClass['link'] }}{{ (empty($jsonFileArray) && $x == 0) ? ' active' : null }}" {{ $dataBs }}-toggle="pill" href="#v-pills-{{ $fileName }}">{{ucfirst($fileName)}}</a>
+                                @php
+                                    $x++;
+                                @endphp
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
 
                     <div class="col-12 col-sm-8 col-md-9 col-lg-10">
                         <div class="tab-content" id="v-pills-tabContent">
                             @if(!empty($jsonFileArray))
-                            <div class="tab-pane fade show active" id="v-pills-json">
+                            <div class="tab-pane {{ $cssClass['tabActive'] }}" id="v-pills-json">
                                 <div class="row">
                                     @foreach($jsonFileArray as $label => $value)
                                     <div class="col-md-6">
-                                        <div class="{{ $formGroup }}">
+                                        <div class="{{ $cssClass['formGroup'] }}">
                                             <label>{{ $label }} </label>
                                             <input type="text" class="{{ $cssClass['input'] }}" name="label[{{ $label }}]" value="{{ $value }}">
                                         </div>
@@ -84,7 +104,7 @@
                                 $x = 0;
                             @endphp
                             @foreach($pageArray as $fileName => $fileValue)
-                            <div class="tab-pane fade{{ (empty($jsonFileArray) && $x == 0) ? ' show active' : null }}" id="v-pills-{{ $fileName }}">
+                            <div class="tab-pane {{ (empty($jsonFileArray) && $x == 0) ? $cssClass['tabActive'] : null }}" id="v-pills-{{ $fileName }}">
                                 <div class="row">
                                     @foreach($fileValue as $label => $value)
                                         @if(is_array($value))
@@ -96,7 +116,7 @@
                                                                 @if(is_array($value4))
                                                                     @foreach($value4 as $label5 => $value5)
                                                                         <div class="col-md-6">
-                                                                            <div class="{{ $formGroup }}">
+                                                                            <div class="{{ $cssClass['formGroup'] }}">
                                                                                 <label>{{$label}}.{{$label2}}.{{$label3}}.{{$label4}}.{{$label5}}</label>
                                                                                 <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}][{{$label3}}][{{$label4}}][{{$label5}}]" value="{{$value5}}">
                                                                             </div>
@@ -104,7 +124,7 @@
                                                                     @endforeach
                                                                 @else
                                                                     <div class="col-lg-6">
-                                                                        <div class="{{ $formGroup }}">
+                                                                        <div class="{{ $cssClass['formGroup'] }}">
                                                                             <label>{{$label}}.{{$label2}}.{{$label3}}.{{$label4}}</label>
                                                                             <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}][{{$label3}}][{{$label4}}]" value="{{$value4}}">
                                                                         </div>
@@ -113,7 +133,7 @@
                                                             @endforeach
                                                         @else
                                                             <div class="col-lg-6">
-                                                                <div class="{{ $formGroup }}">
+                                                                <div class="{{ $cssClass['formGroup'] }}">
                                                                     <label>{{$label}}.{{$label2}}.{{$label3}}</label>
                                                                     <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}][{{$label3}}]" value="{{$value3}}">
                                                                 </div>
@@ -122,7 +142,7 @@
                                                     @endforeach
                                                 @else
                                                     <div class="col-lg-6">
-                                                        <div class="{{ $formGroup }}">
+                                                        <div class="{{ $cssClass['formGroup'] }}">
                                                             <label>{{$label}}.{{$label2}}</label>
                                                             <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}][{{$label2}}]" value="{{$value2}}">
                                                         </div>
@@ -131,7 +151,7 @@
                                             @endforeach
                                         @else
                                             <div class="col-lg-6">
-                                                <div class="{{ $formGroup }}">
+                                                <div class="{{ $cssClass['formGroup'] }}">
                                                     <label>{{$label}}</label>
                                                     <input type="text" class="{{ $cssClass['input'] }}" name="message[{{$fileName}}][{{$label}}]" value="{{$value}}">
                                                 </div>
@@ -148,7 +168,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <button class="btn {{ $cssClass['btn'] }} {{ $floatRight }}" type="submit">{{ trans('lang-maker::sp_lang_maker.save') }}</button>
+                        <button class="btn {{ $cssClass['btn'] }} {{ $cssClass['floatRight'] }}" type="submit">{{ trans('lang-maker::sp_lang_maker.save') }}</button>
                     </div>
                 </div>
             </form>
@@ -179,7 +199,7 @@
                         @endif                        
                     </div>
                     <div class="modal-body">
-                        <div class="{{ $formGroup }}">
+                        <div class="{{ $cssClass['formGroup'] }}">
                             <label for="code" class="col-form-label">{{ trans('lang-maker::sp_lang_maker.language_code') }}</label>
                             <input type="text" class="{{ $cssClass['input'] }}" id="code" name="code" required>
                         </div>
